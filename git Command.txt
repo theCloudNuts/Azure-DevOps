@@ -1,0 +1,222 @@
+$git --version    --> Check the installed Git version
+
+$git status	  --> Check working-tree changes
+
+$git init	  --> Initialise a new repository
+
+$git config --global user.name 'username'    --> Set commit author name
+
+$git config --global user.email 'user email' --> Set commit email
+
+$git config --list
+
+$git clone <repository_url>     --> The repository will be downloaded locally
+
+$cd <repository>
+
+Create a file: $touch file.txt
+
+$git add .
+
+$git commit -m "For Texting"   --> Create a commit
+
+$git push origin master      --> Push code to the GitHub repository
+                                 Go to GitHub, and the files are pushed
+
+$git log        --> Displays all previous commits along with date, timestamp, etc.
+		    Who did the commit, as well as the email address
+
+$git log --oneline -10	--> View the latest 10 commits
+
+$git commit --amend	--> Modify the latest commit
+
+$git show <commit>	--> Inspect a commit
+
+git diff	        --> View unstaged changes
+
+git diff --staged	--> View staged changes
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Branch
+------
+1. To check the branch, $git branch
+
+2. Create the branch, $git branch <branch_name>
+
+3. Switch to branch, $git checkout/switch <branch_name>
+
+4. Merger branch into master, $git merge <new_branch_name>
+
+
+
+git commit:
+----------
+Commit is the most important aspect of Git—all the Git tracking, auditing, and details of who changes the code. 
+Everything gets started after committing your file.
+
+
+git log:
+-------
+You will receive an identification number for your commit, along with the name of the person who made the commit, their email address, and the timestamp associated with the commit.
+
+
+Git Status
+----------
+$git status command is used to display the state of the repository and staging area. 
+
+It allows us to see the tracked, untracked files, and changes. This command will not show any commit records or information.
+
+Primarily, it is used to display the state between the Git Add and Git commit commands. 
+
+We can check whether the changes and files are tracked or not.
+
+
+Git Clone:
+----------
+1. What is Git cloning or Cloning in Git?
+Cloning is a process of creating an identical copy of a Git remote repository on the local machine.
+
+When we clone a repository, all the files are downloaded to the local machine but the remote git repository remains unchanged. 
+
+These changes made on the local machine can be synced with the remote repository anytime the user wants.
+
+$ git clone <repository URL>  
+
+2. Cloning a Repository into a Specific Local Folder
+
+It allows cloning the repository into a specific directory without switching to that particular directory.
+
+$ git clone <repository URL> "new folder(2)" 
+
+
+Git Fork:
+---------
+A fork is a rough copy of a repository. Forking a repository allows you to freely test and debug with changes without affecting the original project.
+ 
+Forking is not a Git function; it is a feature of a Git service like GitHub.
+
+
+Fork vs. Clone:
+---------------
+Both commands are used to create another copy of the repository. 
+
+But the significant difference is that the fork is used to create a server-side copy, and clone is used to create a local copy of the repository.
+
+Command for forking the repository; instead, it is a service provided by third-party Git service like GitHub. 
+
+Comparatively, git clone is a command-line utility that is used to create a local copy of the project.
+
+
+Git Repository:
+--------------
+In Git, the repository is like a data structure used by VCS to store metadata for a set of files and directories. 
+
+It contains the collection of the files as well as the history of changes made to those files. 
+
+Repository in Git is considered as your project folder. A repository has all the project-related data. Distinct projects have distinct repositories.
+
+
+Git Origin Master:
+------------------
+"git origin master" is used in the context of a remote repository. It is used to deal with the remote repository. 
+
+The term origin comes from where repository original situated and master stands for the main branch. 
+
+Git Master:
+Master is a naming convention for Git branch. It's a default branch of Git. 
+After cloning a project from a remote server, the resulting local repository contains only a single local branch. This branch is called a "master" branch. 
+It means that "master" is a repository's "default" branch.
+
+Git Origin:
+In Git, The term origin is referred to the remote repository where you want to publish your commits. 
+The default remote repository is called origin.
+
+#git remote add origin <URL>  --To add remote repository 
+
+	add: New remote
+	origin: Name for this remote (used for remote tracking only)
+	<URL>: address
+
+#git branch -r
+
+#git remote -v   --Show the remote repositories
+
+#git pull origin master  --From central repository to Local repository
+
+#git push or git push -u origin master  --Push your own changes into Central repository
+
+-->GitHub remote out of sync with Local
+	git fetch :Will bringing modified file or new files as well as commit history graphs to Local. 
+		   When you merge to local we call a First forward merge.
+
+	Example: In remote you would have "file1" and in your local "file2" in this case if you fetch it creates a diverging branch, we have branch origin/main
+		looking at the commit ID file "file1" which came from the gitHub remote repository and the barnch main looking commit id for the "file2" now
+ 		if you run #git mrege origin/main it is going way "3(Three) way merge"
+
+In stead running "git fetch" and "git merge" a popular command is "git pull".
+Note: git pull is not = Pull request.
+
+#git push -f <remote>  //forcefully drop your file from local to remote but not recommended
+        
+
+Type of Branches:
+-----------------
+Git has two types of branches called local and remote. 
+To use git pull and git push, you have to tell your local branch that on which branch is going to operate. So, the term origin master is used to deal with a remote repository and master branch. 
+The term push origin master is used to push the changes to the remote repository. 
+
+The term pull origin master is used to access the repository from remote to local.
+
+Git Checkout:
+------------
+The git checkout command is used to switch between branches in a repository.
+
+Checkout Branch:
+$ git branch  
+
+$ git checkout <branchname>
+ 
+Create and Switch Branch:
+------------------------
+$ git checkout -b <branchname>  
+
+Create Branch:
+---------------
+$ git branch  <branch name>  
+
+$ git branch --list  
+or
+$ git branch
+
+Both commands list the available branches in the repository.
+
+The symbol * represents the currently active branch.
+
+Delete Branch:
+Delete the specified branch.
+$ git branch -d<branch name> 
+
+$ git branch -D <branch name>
+
+Delete a Remote Branch:
+Delete a remote branch from Git.
+$ git push origin -delete <branch name> 
+
+Switch to master branch:
+You can switch to the master branch from any other branch,
+Syntax:
+$ git branch -m master
+
+Rename Branch:
+We can rename the branch with the help of the git branch command. To rename a branch, use the command below:
+Syntax:
+$ git branch -m <old branch name><new branch name> 
+
+Merge Branch:
+Git allows you to merge the other branch with the currently active branch. You can merge two branches with the help of the git merge command. 
+The command is used to merge the branches:
+Syntax:
+$ git merge <branch name>   
