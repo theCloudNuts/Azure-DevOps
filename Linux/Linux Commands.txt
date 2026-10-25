@@ -1,0 +1,137 @@
+Linux Commands:
+---------------
+1. touch: Create an empty file with the time stamp
+
+2. cat: Create new file, read file content, to append some new content in an exting file
+
+3. echo: To print the message or print the value of variable
+
+4. pwd: To check Present working directory
+
+5. env: To check Syetem defined variable values (environment varibale)
+   
+   Note: The varibale name should be Uppercase (Capital Letter) when you print the message (value). 
+
+6. #cal: To check Calender
+
+7. #mkdir: To create a directory
+  -p : Preserving Parentile Permission
+
+8. #hostname: To check the host name, #hostnamectl status
+
+   Set a Hostname: #hostnamectl set-hostname <name>
+
+9. #hostnamectl: To Chek details about a host
+
+	free -k, -m , -g, -h
+
+	arch
+
+	uname
+
+	dmidecode -t memory | less   //System Hardware configuration
+
+10. rm: Remove/Delete a file and folder/directory.
+    -f: forcefully
+    -r: recursive
+
+11. ifconfig or ip a : To check a IP address
+	#yum install net-tools
+
+    # cat /etc/sysconfig/network-scripts/ifcfg-enp0s3
+
+    #ifdown enp0s3
+    #ifup enp0s3
+
+12. man or --help: Both are using for help of command
+
+13. su: switch user
+
+14. whoami: To Check the user name
+
+15. who am i: Current logid user detials like username, terminal and Date&time
+
+16. date: Show the current date and time
+
+17. exit or ctrl+d : Exit from your prompt
+
+18. clear or ctrl+l : Clear the Screen
+
+19. which: Full path of the command
+
+20. ls: To list the file & Directory Contains
+    -l: long list
+    -h: humanreadable format
+    -t: time (File has created last is listing first)
+    -r: reverse order
+    -R: Recursive
+    -i: inode number
+    -a: hiddenen files
+
+21: less: To check file content page by page (up and down arrow key and PgUp and PgDn key from Keyboard)
+
+22. more: To check file content page by page (Only down the page, Usage of Enter & Space bar key. Cant go up page by page.)
+
+23. head : To check file contain fast 10 lines by default 
+
+24: tail : To check file contain last 10 lines by default 
+
+25. wc : Word Count (-l=line,-w=word and -c=character)
+
+26. cp: Command use for file copy and folder/directory
+	Syntax: $cp <source> <destination>
+
+27. cd: Change a directory
+
+28. mv: It is used for move the file or rename the file
+
+Suppose you don’t have idea about the command use “whatis” command
+
+Move command use for two functionalities: 
+	i) move 
+	ii) rename
+
+Note: If destination is not available it will rename and if destination is available, it will move.
+
+29. whatis: To use for defination of any command
+
+30. grep: Fetch or retrieve some information from a file. 
+
+31. useradd <user_name>
+    id <user_name>
+    su <user_name>
+	userdel <user_name>
+
+32. groupadd <group_name>
+    gpasswd -M <user1>,<user2> group1
+
+33. -: type of file
+	Total 9 character: first 3 chracter is Ownership, 2nd three chracter Groupowner, 3rd chracter is Other Category
+	r=read =4
+	w=write =2
+	x=Execute =1
+	Total Value is 4+2+1=7
+
+	chmod
+
+34.#ping:(Packet Internet Groper) command is used to check the network connectivity between host and server/host.
+====================================================
+1. ls --help | less
+
+First command output want to see in different way to use | (pipeline).
+Without "|" if you will use that wont traet as a command means less command no meaning.
+
+Separating 1st command o/p as input in 2nd command o/p.
+
+2. Command: Executable file and program.
+=====================================================
+
+
+
+
+
+
+
+
+
+

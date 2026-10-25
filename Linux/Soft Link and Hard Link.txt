@@ -1,0 +1,88 @@
+Link: It is a shortcut or address.
+
+Two types of Link,
+
+1. Soft Link or Symbolink 
+---------------------------
+
+	Syntax: ln -s 
+
+	ln: Link
+	-s: Soft Link
+
+$vim ankit
+Hi
+This is my New File
+:wq
+
+$cat ankit
+Hi
+This is my New File
+
+$ln -s /home/Ranjan/ankit /tmp/venkat-slink
+
+/home/Ranjan/ankit -- Source
+
+/tmp/venkat-slink -- Destination
+
+$ls -l ankit /tmp/venkat-slink
+
+stat -- Display file or file system status
+
+$stat ankit
+
+Note: If I do any modification symbolink it would redirect to the main file and vicevrsa.
+$vim /tmp/venkat-slink
+Hello
+:wq
+
+$cd 
+
+$cat ankit
+
+If I delete the main file,
+$rm ankit
+
+$ls -l ankit /tmp/venkat-slink
+Color is red: No such file or directory called "Dead Link" [No data]
+
+$cat /tmp/venkat-slink
+No Such file or Directory
+
+In Soft Link: Different Inode number
+
+2. Hard Link
+-------------
+Create same file with the inode number.
+
+Inode number = Unique ID
+
+File store in Hard-disk
+
+If you delete main file you can access your data with help of Hard-Link.
+
+Hard-Link means "Copy of Original Files"
+
+$vim elango
+Hello This is Elango
+:wq
+
+$cat elango
+
+$ln /home/ranjan/elango /tmp/elango-hlink
+
+ln = Hard-Link
+
+/home/ranjan/elango = Source
+
+/tmp/elango-hlink = Destination
+
+$ls -il elango /tmp/elango-hlink
+
+Both Source and Destination Properties are same.
+
+
+
+
+
+

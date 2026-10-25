@@ -1,0 +1,159 @@
+Why users?
+
+The user is required to manage the running process, create files, and folders, and provide access to other users in an operating system.
+
+There are different types of Users in Linux OS
+
+1> Admin user:
+
+The user who has full privileges in an OS. 
+
+Usually 'root' is the default admin user in Linux.
+
+The UID of the root user is 0.
+
+2> Normal User: This type of user has limited privileges in an OS.
+
+UID range starts from 1000+ to 60000.
+
+3> System Users: 
+
+This type of user generally manages system-related processes.
+   
+There are two types of System Users such as 
+
+i) Static system users and 
+ii) Dynamic system users.
+
+Static system users: When you install the OS the process 
+
+Static system UID range starts from 1 to 200, 
+
+and Dynamic user UID range starts from 201 to 999. 
+
+4> Sudo Users:
+
+>> Whenever a Normal users get some additional privilege like a root user, Then that user is known as a Sudo user.
+
+>> Sudoers file is "/etc/sudoers"
+
+>> "visudo" is a command line tool that is used to edit sudoers files because whenever we use visudo to edit the sudoers file if any syntactical error, it will not allow us to save the file.
+
+5> Network Users:
+
+This type of user Details are stored in a remote centralized database such as
+LDAP (Light Weight Directory Access Protocol) User in Linux and 
+AD (Active Directory) Users in Windows.
+
+Create a User:
+--------------
+ How many way we can create a user in linux ? 
+
+ There are three way we can create a  user in linux such as using,
+
+  1> useradd 
+  2> adduser 
+  3> newuser 
+
+example : useradd <username> or adduser <username> 
+
+Note: Every User identified by its UID(User Identifiers).
+
+       Such as "root" user uid is "0"
+
+       Static System user uid range is 1 to 200
+
+       Dynamic System users Uid range is 201 to 999
+
+       Normal Users uid range is 1000+ to 60000 
+
+   To check uid for a user  command is,
+   $id <User Name> 
+
+To Assign Password to a User command is:
+#passwd <username> 
+
+This command is used to delete a user if this  User created exist in os:
+#userdel <user_name>
+
+User Infromation:
+----------------
+--User information stored in,
+	/etc/passwd (username,password,UID,GID,comment field blank,home directory of user,shell environment)
+
+--User password related information,
+	/etc/shadow
+
+--User configuration file,
+	/etc/login.defs
+
+--User Properties like, User's home directory and shell stored in,
+	/etc/default/useradd
+
+       #cat /etc/default/useradd
+	GROUP=100             --user define maximum 100 groups
+	HOME=/home
+	INACTIVE=-1           --never inactive
+	EXPIRE=               --No value means never expired
+	SHELL=/bin/bash       --Shell environment
+	SKELL=/etc/skel       --Skeliton
+	CREATE_MAIL_SPOOL=yes
+
+  #cat /etc/login.defs | less
+ You will read with PAM (Pluggable Authentication Module), 
+
+#ls -a
+. 		--Present/Current Working Directory
+.. 		--Parent directory of current directory
+.bash_logout 	--When user logout from that account this file has executed
+.bash_profile	--Basically available get environment varibale
+.bash_history	--Capture all executed commands like current and previous
+.bashrc		--Added information suppose "alias" like duplicate
+
+Group:
+-----
+What is Group ? 
+	Group is a collection of one or more number of users.
+
+#groupadd <group_name>
+
+To add at a time multiple user in a group 
+#gpasswd -M <user1>,<user2> group1
+
+To delete a user from a group 
+#gpasswd -d <UserName> <GroupName> 
+
+To delete a group
+#groupdel <Groupname> 
+
+--Group information stored in,
+	/etc/group
+
+	#tail /etc/group 
+		<GroupName>:<Encrypted Password>:<GID>:<Group Members>
+--Group password related information,
+	/etc/gshadow
+
+	#tail /etc/gshadow 
+			<Group Name>:<Encrypted Password>:<GroupAdmin>:<GroupMembers>
+
+Sudo User:
+----------
+Super user do for other user.
+
+Like Normal user can be treat as Super user.
+
+Root is Admin user or super user instead of root user anyone else become root userby getting some additional privilege that is "sudo user".
+	i)   /etc/sudoers
+	ii)  visudo
+
+root ALL=(ALL) ALL
+
+root ALL=(ALL) NOPASSWD: ALL
+
+root  -- user
+ALL   -- All terminal tty
+(ALL) -- All user means (How many user in the system)
+ALL   -- All commands
+
+

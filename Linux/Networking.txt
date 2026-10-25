@@ -1,0 +1,205 @@
+What is a network configuration file in Linux?
+#cat /etc/sysconfig/network-scripts/ifcfg-<conn-name>
+
+What is a hostname configuration file?
+#cat /etc/hostname
+
+Local DNS file,
+	/etc/hosts
+
+Check the IP address,
+	#ip a 
+	#ip addr show
+	#ifconfig
+
+#ip link [How many adptor connected to the internet]
+	Which link you have to set the IP address.
+  i.lo : default
+  ii.enp0s3
+
+How to set the hostname?
+	#hostnamectl set-hostname hostname
+
+Network Configuration File,
+	/etc/syssconfig/network-scripts/ifcfg-<enp0s3>
+
+	#ifdown enp0s3
+	#ifup enp0s3
+
+$env :System defined Variable
+
+$hostname -i   --Ip Address
+
+$hostname -d   --Domain Name
+
+$hostname -s   --Hostname
+
+#free -h
+
+#lsmem
+
+#cat /etc/meminfo
+
+#dmidecode -t memory
+
+#dmidecode -t cpu
+
+Adaptor
+-------
+i.  NAT
+ii. Bridge Adaptor
+iii. Internet Network
+
+$hostname 
+server.example.com  --FQDN(Fully Qualified Domain Name)
+server --Hostname
+example --Subdomain
+.com    --Topl Level
+Subdomain + .com =Domain Name
+
+How to configure IP address in your machine,
+ip address=192.168.10.10
+Prefix=24 or Subnetmask=255.255.255.0
+gateway=192.168.10.1
+dns=8.8.8.8
+--------------------------------------------------------
+IP Address:Logical address. It's a dynamic means we can change (manually or allocate) keep on change.
+----------
+
+IP - Internet Protocol
+
+Two protocol versions of IP: Version 4 and 6. 
+An IP Address version 4 (or short IPv4) consists of a 32-bit number. 
+An IP Address version 6 (or short IPv6) consists of a 128-bit number.
+
+172.16.254.1  --->IPV4
+Total=4 octects , one-one octect =8bit
+Ip address range: 0-255
+Divided into 2 parts:
+	i)Network ID
+	ii)HOST ID
+
+There are 5 classes of IP address,
+1)CLASS A: Range is 1.0.0.0 to 126.0.0.0 (1-126)
+	   Subnetmask: 255.0.0.0
+	   Prefix: 8 (1 Octect is 8 Bit)    //Prefix is also call network portion
+1st field reserved for "Network ID"
+
+Note:Network ID represents is "1"
+     HOST ID represents is "0"
+
+1st field is represent others are 0 (zero) means that is not required for calculate,
+255.0.0.0 
+
+Ex:10.10.20.15
+
+2)CLASS B: Range is 128.0.0.0 to 191.0.0.0
+           Subnetmask: 255.255.0.0
+           Prefix:16
+First 2 octect reserved for network portion & remaining 2 are HOST portion.
+
+127.0.0.1 : Reserved for loop back address (Check Network interface card ok or not)
+
+Ex:172.16.5.10
+
+3)CLASS C: Range is 192.0.0.0 to 223.0.0.0
+           Sunetmask: 255.255.255.0
+           Prefix:24
+
+Three octect are reserved for network portion remaining one reserved HOST portion.
+
+Ex:192.168.60.12
+
+4)CLASS D: Range is 224.0.0.0 to 239.0.0.0
+          Used for Multicasting, we are not using.
+
+5)CLASS E: Range is 240.0.0.0 to 255.0.0.0 
+          Used for R&D Purpose.
+ 
+---------------------------------------------------------
+How to set Hostname?
+#hostnamectl set-hostname "server.example.com"
+#hostname
+#ip a
+
+Use "nmcli" command for set the network.
+#nmcli c s
+
+#nmcli con modify enp0s3 ipv4.address "192.168.1.40/24"
+
+#nmcli con modify enp0s3 ipv4.gateway "192.168.1.1"
+
+#nmcli con modify enp0s3 ipv4.dns "8.8.8.8"
+
+#nmcli con modify enp0s3 ipv4.method manual
+
+#nmcli con modify enp0s3 connection.autoconnect yes
+
+#nmcli c s
+
+#nmcli c down enp0s3
+
+#nmcli c up enp0s3
+
+C - Connection
+S - Show
+
+#ip a     (Now you can get the IP whatever we have provided)
+
+#cat /etc/hosts
+192.168.1.40 server2.example.com server2
+
+#ip route  --Network setup Above machine is completed
+
+Where the protocol numbers are stored in Linux?
+#cat /etc/protocols
+
+What is the protocol number of ICMP?   "1"
+
+nmtui:
+https://www.tecmint.com/nmtui-configure-network-connection/
+
+--------------------------------------------------------------
+DHCP
+----
+Dynamic Host Configuration Protocol (DHCP) is a client/server protocol that automatically provides an Internet Protocol (IP) host with its IP address and other related configuration information such as the subnet mask and default gateway.
+
+DNS
+---
+Domain Name System (DNS)
+DNS Server provide computer name-to-IP address mapping name resolution services to computers and users.
+
+Domain Name Service (DNS) numbers are IP addresses that a workstation or server uses to refer to specific servers that resolve domain names to IP addresses.
+
+
+Gateway
+-------
+A gateway IP refers to a device on a network which sends local network traffic to other networks.
+
+Router:
+------
+A router is a networking layer system used to manage and forward data packets to devices network while a gateway is simply a hardware that acts as a gate between the networks. 
+
+
+Subnet:
+-------
+Actually a subnet denotes a range of addresses that can be allocated to hosts, such as 192.168.1.0/24 which can accommodate 254 host addresses with one Network address and Broadcast address.
+
+Subnet Mask:
+------------
+The subnet mask is the classical way of representing which bits are part of the network portion of the address vs. the host bits of the address. 
+
+The subnet mask for a /24 network is 255.255.255.0.
+
+A Subnet mask is a 32-bit value that allows the recipient of IP packets to distinguish the network ID portion of the IP address from the Host ID portion of the address.
+
+Broadcast:
+----------
+Broadcasting is a method of transferring a message to all recipients.
+Broadcast delivers a message to all nodes in the network using a one-to-all association.
+
+Computer Network:
+-----------------
+A computer network is a group of two or more interconnected computer systems. You can establish a network connection using either cable or wireless media.
+
+Every network involves hardware and software that connects computers and tools.

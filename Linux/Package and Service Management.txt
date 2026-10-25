@@ -1,0 +1,129 @@
+Package Management
+------------------
+RPM:
+---
+It's stands for "Red Hat Package Manager".
+
+It was developed by Red Hat and is primarily used on Red Hat-based Linux operating systems (Fedora, CentOS, RHEL, etc.). 
+
+An RPM package uses the .rpm extension and is a bundle (a collection) of different files.
+
+#rpm -qa   --query all packages
+
+Yum: (Yellowdog Updater, Modified) Commands for Package Management)
+----
+Used for installing, deleting, querying, and otherwise managing Red Hat Enterprise Linux RPM software packages from official Red Hat software repositories.
+
+#yum clean all   --Clean the cache
+
+#yum repo list  --repo ID name, how many number packages will list from created repository
+
+#yum repoinfo   --repository details
+
+#yum list all   --List all available packages
+
+#yum list all | grep "pkg_name"
+
+#yum search <pkg_name>
+
+#yum install <pkg_name> (y/n/d)
+
+
+++++++++++++++++++++++++++++++++++++
+
+Service Management:
+-------------------
+What is service/Daemon ?
+
+ Ans:  A Linux service is an application (or set of applications)/Programs that runs in the background waiting to be used, or carrying out essential tasks.
+
+Sometimes the name of these services or daemons ends with the letter d.
+   
+   example: sshd,httpd,vsftpd,
+
+ In rhel7 service or daemons known as init scripts file .
+
+ >> To manage(status,start, stop, restart, enable, disable) 
+
+	the services in rhel7 we can use a command called "systemctl" or "service" .
+
+
+ >> To start, stop and restart a service/daemon is temporary means still server is running .
+
+ >> To enable/disable a servive/daemon is permanent accross reboot .
+
+>> To see available unit types .
+
+  # systemctl -t help 
+
+ Where the unit script file available in rhel7 ? 
+
+ "/usr/lib/systemd/system" 
+
+ # cd /usr/lib/systemd/system/
+
+ #ls *.service
+
+ # ls *.target 
+ # ls *.socket
+
+>> How to check  the status of a daemon/service ?
+
+ # systemctl status  <servicename>
+
+ # systemctl status  sshd 
+  
+   (or)
+
+# service sshd status 
+
+ how to start a service ? 
+
+# systemctl start <ServiceName>
+# systemctl start sshd
+
+   (or)
+
+# service sshd start 
+
+How to stop a service ?
+
+ # systemctl stop <ServiceName> .
+ # systemctl stop sshd 
+
+   (or)
+
+ # service  sshd stop .
+
+How to restart a service ?
+
+>> Restart a service means stop and start .
+ 
+ # systemctl restart sshd 
+
+ # service sshd restart . 
+
+ >> If a service is enabled/disable mode then temporarly we can start or stop still the session is going on .
+
+ >>  A service enable means accross reboot service will be active no matter before reboot atcive or inactive .
+
+ >> A service disable means accross reboot service will be inactive no matter before reboot active or inactive .
+
+To enable a service . 
+
+ # systemctl enable sshd 
+
+TO disable a service .
+
+ # systemctl disable sshd 
+
+ Note:  Using "service" command we can not enable or disable a service .
+        To enable or disable a service permanetly we can use "chkconfig" command .
+
+  ex: 
+   
+    # chkconfig sshd on (For Enable a service)
+
+    # chkconfig sshd off (For disable service )
+
+  

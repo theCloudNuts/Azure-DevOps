@@ -1,0 +1,111 @@
+File Permission:
+=================
+
+What is the umask value in Linux?
+
+ Ans: Umask determines the default value for files and folders in Linux/Unix
+
+      The default umask value under root user is 022 (----w--w-)
+
+      The default umask value under normal user is 002 (-------w-)
+
+ What is the full permission for a file in Linux?
+
+ Ans: The permission of a file in Linux is 666 (rw-rw-rw-).
+      
+What is the full permission for a folder in Linux?
+
+Ans: The full permission for a folder in Linux/Unix is 777(rwxrwxrwx)
+
+ What is the default permission for a file and folder in Linux/Unix?
+
+Ans: Default permission for a file under root user is 
+     666 - 022 = 644
+
+    The default permission for a folder under the root user is 
+     777 - 022 = 755 
+
+    The efault permission for a file under normal user is 
+     666  - 002 = 664 
+
+    The default permission for a folder under normal user is 
+     777  - 002 = 775
+
+----------(rwxrwxrwx)(777) 
+
+----------(rw-rw-rw-)666
+
+----------(--x--x--x)111
+
+----------(-wx-wx-wx)333
+
+----------(r-xr-xr-x)555  
+ 
+File permission provides a secure method for storing files. 
+
+Every file has the following attributes −
+
+Owner permissions − The owner's permissions determine what actions the owner of the file can perform on the file.
+
+Group permissions − The group's permissions determine what actions a user, who is a member of the group that a file belongs to, can perform on the file.
+
+Other (world) permissions − The permissions for others indicate what action all other users can perform on the file.
+
+File Access Modes
+==================
+The permissions of a file are the first line of defense in the security of a Unix system. The basic building blocks of Unix permissions are the read, write, and execute permissions, which have been described below −
+
+Read(r)-4
+Grants the capability to read, i.e., view the contents of the file.
+
+Write(w)-2
+Grants the capability to modify, or remove the content of the file.
+
+Execute(x)1
+Users with execute permissions can run a file as a program.
+
+Directory Access Modes
+======================
+Directory access modes are listed and organized in the same manner as any other file. There are a few differences that need to be mentioned −
+
+Read(r)4
+Access to a directory means that the user can read the contents. The user can look at the filenames inside the directory.
+
+Write(w)2
+Access means that the user can add or delete files from the directory.
+
+Execute(x)1
+Executing a directory doesn't make sense, so think of this as a traverse permission.
+
+Note:- A user must have execute access to the bin directory to execute the ls or the cd command.
+       Script or program file required to execute permission.
+
+Changing Permissions
+To change the file or the directory permissions, we use the chmod (change mode) command. 
+There are two ways to use chmod — the symbolic mode and the absolute/numerical mode.
+
+Examples: chmod 744 <file/folderName>
+          chmod 0 <filename>
+          chmod 761 <filename>
+          
+          Symbolically:
+            
+           syntax:
+               chmod  whowhatwhich <file/folder>
+                
+             who stands for u,g,o 
+             what stands for +,-,=
+             which stands for r,w,x
+-------------------------------------
+          # chmod a=rwx <filename> // Here a(all) stands for u(user/owner),g(group 				   owner) and o(others) .
+          
+                (or)
+          # chmod  ugo=rwx <filename>
+
+          # chmod o-rwx <filename>
+          
+          # chmod u-x,g-rx,o-rw <filename> (rw--w---x)
+          # chmod g=rx <filename> (rw-r-x--x)
+
+          # chmod u-r,g=wx,o+r <filename>
+          # chmod u=w,g=wx,o=rx <filename> (-w-,-wx,r-x)               
